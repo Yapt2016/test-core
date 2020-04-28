@@ -1,0 +1,38 @@
+spring:
+  profiles:
+    # 配置文件选择
+    active: all
+
+  # redis配置
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000
+    jedis:
+      pool:
+        # 控制一个pool可分配多少个jedis实例，通过pool.getResource()来获取；如果赋值为-1，则表示不限制；如果pool已经分配了maxActive个jedis实例，则此时pool的状态为exhausted
+        max-active: 8
+        # 控制一个pool最多有多少个状态为idle(空闲)的jedis实例
+        max-idle: 8
+        # 控制一个pool最少有多少个状态为idle(空闲)的jedis实例
+        min-idle: 1
+        # 表示当borrow一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛JedisConnectionException
+        max-wait: 3000
+
+
+mybatis:
+  mapper-locations: classpath:com.yapt.demo.test.core.dao.mapper/*Mapper.xml
+  type-aliases-package: com.yapt.demo.test.core.dao.model
+
+logging:
+  level:
+    root: info
+    #解决SpringBoot去掉CONDITIONS EVALUATION REPORT及自动配置内容的查看
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
+  #日志存入本地的路径
+  path: D:/software/log
