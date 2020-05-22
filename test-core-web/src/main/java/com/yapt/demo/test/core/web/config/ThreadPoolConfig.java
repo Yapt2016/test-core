@@ -1,4 +1,4 @@
-package com.yapt.demo.test.core.web.configuration;
+package com.yapt.demo.test.core.web.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ public class ThreadPoolConfig {
 
     @Bean
     ThreadPoolTaskExecutor taskExecutor() {
-        log.info("*****************************线程池初始化开始****************************");
+        log.info("ThreadPoolConfig.taskExecutor,开始加载ThreadPoolTaskExecutor配置");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(100);
         executor.setMaxPoolSize(100);
@@ -26,7 +26,6 @@ public class ThreadPoolConfig {
         executor.setThreadNamePrefix("TaskExecutor-");
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.initialize();
-        log.info("*****************************线程池初始化结束****************************");
         return executor;
     }
 }
