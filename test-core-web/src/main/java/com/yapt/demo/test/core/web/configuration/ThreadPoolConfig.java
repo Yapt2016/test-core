@@ -1,5 +1,6 @@
 package com.yapt.demo.test.core.web.configuration;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -10,11 +11,13 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @author hurui
  * @version Id: ThreadPoolConfig.java, v 0.1 2020/5/22 11:03 YaphetS Exp $$
  */
+@Slf4j
 @Configuration
 public class ThreadPoolConfig {
 
     @Bean
     ThreadPoolTaskExecutor taskExecutor() {
+        log.info("*****************************线程池初始化开始****************************");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(100);
         executor.setMaxPoolSize(100);
@@ -23,6 +26,7 @@ public class ThreadPoolConfig {
         executor.setThreadNamePrefix("TaskExecutor-");
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.initialize();
+        log.info("*****************************线程池初始化结束****************************");
         return executor;
     }
 }
