@@ -6,16 +6,11 @@ import com.yapt.demo.test.core.service.api.model.req.UserReqDTO;
 import com.yapt.demo.test.core.service.api.model.res.UserResDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 
 @Slf4j
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebApplication.class)
-class UserTest {
+public class UserTest extends BaseTest{
 
     @Resource
     private UserService userService;
@@ -29,5 +24,7 @@ class UserTest {
         MsgResult<UserResDTO> result = userService.queryUserInfo(req);
         log.info("测试结果,return:{}",result);
     }
+
+
 
 }
