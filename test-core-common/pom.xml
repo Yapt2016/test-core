@@ -17,10 +17,6 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.yapt.demo</groupId>
-            <artifactId>user-core-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>io.shardingsphere</groupId>
             <artifactId>sharding-core</artifactId>
             <scope>compile</scope>
