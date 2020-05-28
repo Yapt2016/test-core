@@ -30,7 +30,7 @@ public class UserServiceManager {
      */
     public MsgResult<Boolean> addUserInfo(UserReqDTO reqDTO) {
         MsgResult<Boolean> result = new MsgResult<>(Boolean.TRUE);
-        UserDO req = UserLoginConvert.INSTANCE.convert(reqDTO);
+        UserDO req = UserLoginConvert.getInstance() .convert(reqDTO);
         log.info("UserServiceManager.addUserInfo,新增用户信息,param:{}", req);
         int count = userMapper.save(req);
         log.info("UserServiceManager.addUserInfo,新增用户信息,return:{}", count);
@@ -45,11 +45,11 @@ public class UserServiceManager {
      */
     public MsgResult<UserResDTO> queryUserInfo(UserReqDTO reqDTO) {
         MsgResult<UserResDTO> result = new MsgResult<>();
-        UserDO req = UserLoginConvert.INSTANCE.convert(reqDTO);
+        UserDO req = UserLoginConvert.getInstance().convert(reqDTO);
         log.info("UserServiceManager.addUserInfo,查询用户信息,param:{}", req);
         req = userMapper.get(req);
         log.info("UserServiceManager.addUserInfo,查询用户信息,return:{}", req);
-        UserResDTO res = UserLoginConvert.INSTANCE.convert(req);
+        UserResDTO res = UserLoginConvert.getInstance().convert(req);
         result.setResult(res);
         return result;
     }

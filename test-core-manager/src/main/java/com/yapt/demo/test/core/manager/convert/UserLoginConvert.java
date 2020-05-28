@@ -4,13 +4,26 @@ import com.yapt.demo.test.core.dao.model.UserDO;
 import com.yapt.demo.test.core.service.api.model.req.UserReqDTO;
 import com.yapt.demo.test.core.service.api.model.res.UserResDTO;
 
+
 /**
  * @author hurui
  * @version Id: UserLoginConvert.java, v 0.1 2020/1/9 15:14 YaphetS Exp $$
  */
 public class UserLoginConvert {
 
-    public static final UserLoginConvert INSTANCE = new UserLoginConvert();
+    private volatile static UserLoginConvert INSTANCE  = null;
+
+
+    public static UserLoginConvert getInstance(){
+        if(INSTANCE == null){
+            synchronized(UserLoginConvert.class){
+                if(INSTANCE == null){
+                    INSTANCE = new UserLoginConvert();
+                }
+            }
+        }
+        return INSTANCE;
+    }
 
     /**
      * 参数转换
