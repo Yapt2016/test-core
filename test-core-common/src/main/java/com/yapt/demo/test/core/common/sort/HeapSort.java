@@ -76,8 +76,10 @@ public class HeapSort {
     }
 
     public static void main(String[] args) {
-        int[] array = {3,2,2,1,4,9,5,8,6};
+        int[] array = {3,2,0,7,1,4,9,5,8,6};
+        Long start = System.currentTimeMillis();
         heapSort(array);
-        log.info("堆排序,result:{}",array);
+        Long end = System.currentTimeMillis();
+        log.info("堆排序,总耗时:{},result:{}",end-start,array);
     }
 }

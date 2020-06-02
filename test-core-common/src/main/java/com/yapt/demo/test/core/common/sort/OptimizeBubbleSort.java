@@ -14,7 +14,7 @@ public class OptimizeBubbleSort {
      * @param array
      * @return
      */
-    public static int[] optimizeBubbleSort(int[] array){
+    public static void optimizeBubbleSort(int[] array){
 
         //记录执行的次数
         int num = 0;
@@ -40,11 +40,13 @@ public class OptimizeBubbleSort {
             ++num;
         }
         log.info("优化版冒泡排序,总共交换了{}轮",num);
-        return array;
     }
 
     public static void main(String[] args) {
-        int[] array = {3,2,7,1,4,9,5,8,6};
-        log.info("优化版冒泡排序,result:{}",optimizeBubbleSort(array));
+        int[] array = {3,2,0,7,1,4,9,5,8,6};
+        Long start = System.currentTimeMillis();
+        optimizeBubbleSort(array);
+        Long end = System.currentTimeMillis();
+        log.info("优化版冒泡排序,总耗时:{},result:{}",end-start,array);
     }
 }

@@ -14,7 +14,7 @@ public class SelectSort {
      * @param array
      * @return
      */
-    public static int[] selectSort(int[] array){
+    public static void selectSort(int[] array){
         int maxIndex;
         int temp;
         for(int i = 0; i< array.length-1 ; i++){
@@ -24,16 +24,17 @@ public class SelectSort {
                     maxIndex = j;
                 }
             }
-            System.out.println(maxIndex);
             temp = array[maxIndex];
             array[maxIndex] = array[array.length-i-1];
             array[array.length-i-1] = temp;
         }
-        return array;
     }
 
     public static void main(String[] args) {
-        int[] array = {3,2,7,1,4,9,5,8,6};
-        log.info("选择排序,result:{}",selectSort(array));
+        int[] array = {3,2,0,7,1,4,9,5,8,6};
+        Long start = System.currentTimeMillis();
+        selectSort(array);
+        Long end = System.currentTimeMillis();
+        log.info("选择排序,总耗时:{},result:{}",end-start,array);
     }
 }

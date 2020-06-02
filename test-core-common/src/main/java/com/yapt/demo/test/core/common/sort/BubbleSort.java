@@ -14,7 +14,7 @@ public class BubbleSort {
      * @param array
      * @return
      */
-    public static int[] bubbleSort(int[] array){
+    public static void bubbleSort(int[] array){
         //记录执行的次数
         int num = 0;
         int temp = 0;
@@ -30,11 +30,13 @@ public class BubbleSort {
             ++num;
         }
         log.info("冒泡排序,总共交换了{}轮",num);
-        return array;
     }
 
     public static void main(String[] args) {
-        int[] array = {3,2,7,1,4,9,5,8,6};
-        log.info("冒泡排序,result:{}",bubbleSort(array));
+        int[] array = {3,2,0,7,1,4,9,5,8,6};
+        Long start = System.currentTimeMillis();
+        bubbleSort(array);
+        Long end = System.currentTimeMillis();
+        log.info("冒泡排序,总耗时:{},result:{}",end-start,array);
     }
 }
