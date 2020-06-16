@@ -5,7 +5,7 @@ import com.yapt.demo.test.core.service.api.model.base.MsgResult;
 import com.yapt.demo.test.core.service.api.model.req.UserReqDTO;
 import com.yapt.demo.test.core.service.api.model.res.UserResDTO;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import javax.annotation.Resource;
 
