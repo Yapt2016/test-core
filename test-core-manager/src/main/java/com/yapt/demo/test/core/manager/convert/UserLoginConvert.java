@@ -11,6 +11,10 @@ import com.yapt.demo.test.core.service.api.model.res.UserResDTO;
  */
 public class UserLoginConvert {
 
+    private UserLoginConvert(){
+
+    }
+
     private volatile static UserLoginConvert INSTANCE  = null;
 
 

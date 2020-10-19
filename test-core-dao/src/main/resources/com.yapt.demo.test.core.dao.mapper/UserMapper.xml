@@ -68,7 +68,7 @@
     </insert>
 
     <select id="get" parameterType="com.yapt.demo.test.core.dao.model.UserDO"
-            resultType="com.yapt.demo.test.core.dao.model.UserDO">
+            resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from t_user

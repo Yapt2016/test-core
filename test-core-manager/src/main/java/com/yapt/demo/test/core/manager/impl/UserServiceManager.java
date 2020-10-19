@@ -3,6 +3,7 @@ package com.yapt.demo.test.core.manager.impl;
 import com.yapt.demo.test.core.dao.mapper.UserMapper;
 import com.yapt.demo.test.core.dao.model.UserDO;
 import com.yapt.demo.test.core.manager.convert.UserLoginConvert;
+import com.yapt.demo.test.core.service.api.annotation.MyAnnotation;
 import com.yapt.demo.test.core.service.api.model.base.MsgResult;
 import com.yapt.demo.test.core.service.api.model.req.UserReqDTO;
 import com.yapt.demo.test.core.service.api.model.res.UserResDTO;
@@ -30,7 +31,7 @@ public class UserServiceManager {
      */
     public MsgResult<Boolean> addUserInfo(UserReqDTO reqDTO) {
         MsgResult<Boolean> result = new MsgResult<>(Boolean.TRUE);
-        UserDO req = UserLoginConvert.getInstance() .convert(reqDTO);
+        UserDO req = UserLoginConvert.getInstance().convert(reqDTO);
         log.info("UserServiceManager.addUserInfo,新增用户信息,param:{}", req);
         int count = userMapper.save(req);
         log.info("UserServiceManager.addUserInfo,新增用户信息,return:{}", count);
@@ -43,13 +44,14 @@ public class UserServiceManager {
      * @param reqDTO
      * @return
      */
+    @MyAnnotation
     public MsgResult<UserResDTO> queryUserInfo(UserReqDTO reqDTO) {
         MsgResult<UserResDTO> result = new MsgResult<>();
         UserDO req = UserLoginConvert.getInstance().convert(reqDTO);
         log.info("UserServiceManager.addUserInfo,查询用户信息,param:{}", req);
-        req = userMapper.get(req);
-        log.info("UserServiceManager.addUserInfo,查询用户信息,return:{}", req);
-        UserResDTO res = UserLoginConvert.getInstance().convert(req);
+        UserDO userDO = userMapper.get(req);
+        log.info("UserServiceManager.addUserInfo,查询用户信息,return:{}", userDO);
+        UserResDTO res = UserLoginConvert.getInstance().convert(userDO);
         result.setResult(res);
         return result;
     }

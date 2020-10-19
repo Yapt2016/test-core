@@ -1,0 +1,2 @@
+className = com.yapt.demo.test.core.service.api.model.req.Student
+methodName = play

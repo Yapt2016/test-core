@@ -3,6 +3,10 @@ package com.yapt.demo.test.core.web;
 import com.google.common.util.concurrent.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hurui
@@ -11,6 +15,8 @@ import org.junit.Test;
 @Slf4j
 public class RateLimiterTest extends BaseTest{
 
+    @Resource
+    private ThreadPoolTaskExecutor taskExecutor;
 
     @Test
     public void test(){
@@ -29,6 +35,20 @@ public class RateLimiterTest extends BaseTest{
              * acquire(N)可以获取多个令牌。
              */
             System.out.println(r.acquire());
+        }
+    }
+
+    RateLimiter rateLimiter = RateLimiter.create(0.5);
+
+
+    @Test
+    public void Rate(){
+        while (true) {
+            if (rateLimiter.tryAcquire(1, TimeUnit.SECONDS)) {
+                System.out.println("SUCCESS");
+            } else {
+                System.out.println("FAILURE");
+            }
         }
     }
 }

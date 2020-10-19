@@ -2,6 +2,11 @@ package com.yapt.demo.test.core.common.sort;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+
 /**
  * @author hurui
  * @version Id: Quicksort.java, v 0.1 2020/6/2 14:13 YaphetS Exp $$
@@ -43,7 +48,7 @@ public class QuickSort {
                 j--;
             }
 
-            //接着从右边开始循环,寻找大于基数的值,找到之后也退出当前循环
+            //接着从左边开始循环,寻找大于基数的值,找到之后也退出当前循环
             while (arr[i] <= temp && i<j){
                 i++;
             }
@@ -70,9 +75,83 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] array = {3,2,0,7,1,4,9,5,8,6};
         Long start = System.currentTimeMillis();
-        quickSort(array,0,array.length-1);
+        sort(array,0,array.length-1);
         Long end = System.currentTimeMillis();
         log.info("快速排序,总耗时:{},result:{}",end-start,array);
+
+        String str = "1,2,3,4,5,6,7,8,9,0";
+        maxNum(str);
+
     }
 
+
+    public static void sort(int[] array,int left,int right){
+
+        if(left>right){
+            return;
+        }
+
+        int i = left;
+        int j = right;
+        int temp = array[left];
+
+
+        while (i!=j){
+            while (array[j] >= temp && i<j){
+               j--;
+            }
+            while (array[i] <= temp && i<j){
+               i++;
+            }
+
+            if(i<j){
+                int t = array[i];
+                array[i] = array[j];
+                array[j] = t;
+            }
+        }
+
+        array[left] = array[i];
+        array[i] = temp;
+
+        sort(array,left,i-1);
+
+        sort(array,i+1,right);
+
+    }
+
+
+    public static void maxNum(String str){
+
+        List<String> list = Arrays.asList(str.split(","));
+
+        List<String> result = new ArrayList<>();
+        for(int i=0;i<list.size();i++){
+            String a = list.get(i);
+            if("0".equals(a)){
+                continue;
+            }
+            for(int j=0;j<list.size();j++){
+               String b = list.get(j);
+               if(b.equals(a)){
+                   continue;
+               }
+                for(int k=0; k<list.size();k++){
+
+                   String c = list.get(k);
+                   if(c.equals(b) || c.equals(a)){
+                       continue;
+                   }
+                   System.out.println(a+b+c);
+                    result.add(a+b+c);
+                }
+            }
+        }
+        System.out.println("结果:"+result);
+        System.out.println("结果数量:"+result.size());
+
+        HashSet<String> hashSet = new HashSet<>(result);
+        System.out.println("结果:"+hashSet);
+        System.out.println("结果数量:"+hashSet.size());
+    }
 }
