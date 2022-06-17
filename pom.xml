@@ -45,7 +45,7 @@
         <commons-lang3.version>3.1</commons-lang3.version>
         <spring-context.version>5.2.2.RELEASE</spring-context.version>
         <jackson.version>2.10.2</jackson.version>
-        <fastjson.version>1.2.60</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <oval.version>1.81</oval.version>
     </properties>
 
